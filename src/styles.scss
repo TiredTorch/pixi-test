@@ -4,7 +4,15 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    border: 0;
     font-size: 100%;
     font: inherit;
+}
+button {
+    cursor: pointer;
+    background: "#e7e7e7";
+    color: "#1e1e1e";
+    &:hover {
+        color: black;
+        background: "#555555"
+    }
 }

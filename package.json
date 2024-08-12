@@ -11,7 +11,9 @@
     },
     "private": true,
     "dependencies": {
+        "@pixi/react": "^7.1.2",
         "eslint-plugin-prettier": "^5.2.1",
+        "pixi.js": "^7.4.2",
         "react": "18.3.1",
         "react-dom": "18.3.1"
     },
@@ -44,7 +46,7 @@
         "eslint-plugin-react-hooks": "4.6.0",
         "jsdom": "~22.1.0",
         "nx": "19.5.7",
-        "prettier": "^2.6.2",
+        "prettier": "^2.8.8",
         "sass": "^1.55.0",
         "typescript": "~5.5.2",
         "vite": "^5.0.0",
