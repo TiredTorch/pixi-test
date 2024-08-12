@@ -5,11 +5,10 @@
     "license": "MIT",
     "scripts": {
         "start": "nx serve",
-        "build": "nx build",
+        "build": "nx build --prod",
         "test": "nx test",
         "format": "prettier --write .",
         "lint": "nx run lint",
-        "predeploy": "npm run build",
         "deploy": "gh-pages -d dist/pixi-test"
     },
     "private": true,
