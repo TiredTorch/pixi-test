@@ -1,30 +1,31 @@
 import "javascript-astar";
 import { FC } from "react";
-import { Container, Graphics } from "@pixi/react";
-import { CELL_SIZE } from "../../utils";
+import { Container } from "@pixi/react";
+import { ColorDot } from "./ColorDot/ColorDot";
 import { GridProps } from "./Grid.types";
+import { GridCell } from "./GridCell/GridCell";
 
-export const Grid: FC<GridProps> = ({ map }) => {
+export const Grid: FC<GridProps> = ({ map, endPoint, route, startPoint }) => {
     console.log("map", map);
 
     return (
         <Container>
             {map?.grid?.map((col, rowIndex) =>
                 col?.map((cell, cellIndex) => (
-                    <Graphics
+                    <GridCell
                         key={`${rowIndex}_${cellIndex}`}
-                        x={cell.y * CELL_SIZE}
-                        y={cell.x * CELL_SIZE}
-                        draw={(g) => {
-                            g.clear();
-                            g.beginFill(cell.weight === 1 ? "white" : "gray");
-                            g.lineStyle(1, "black");
-                            g.drawRect(0, 0, CELL_SIZE, CELL_SIZE);
-                            g.endFill();
-                        }}
+                        {...cell}
                     />
                 ))
             )}
+            <ColorDot
+                node={startPoint}
+                color={"green"}
+            />
+            <ColorDot
+                node={endPoint}
+                color={"red"}
+            />
         </Container>
     );
 };

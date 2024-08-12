@@ -1,7 +1,7 @@
-import { astar, Graph } from "javascript-astar";
+import { astar, Graph, GridNode } from "javascript-astar";
 import { useCallback, useMemo, useState } from "react";
 import { Stage } from "@pixi/react";
-import { Button, Grid } from "../components";
+import { Button, Character, Grid } from "../components";
 import { CELL_SIZE } from "../utils";
 import { appStyles } from "./app.styles";
 
@@ -53,7 +53,13 @@ const App = () => {
                         backgroundColor: 0xfff7e0,
                     }}
                 >
-                    <Grid map={graph} />
+                    <Grid
+                        map={graph}
+                        startPoint={startPoint}
+                        endPoint={endPoint}
+                        route={characterPath}
+                    />
+                    <Character />
                 </Stage>
             </div>
         </div>

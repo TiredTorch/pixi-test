@@ -10,6 +10,7 @@ declare module "javascript-astar" {
     declare class GridNode {
         x: number;
         y: number;
+        weight: number;
     }
 
     interface Heuristic {
