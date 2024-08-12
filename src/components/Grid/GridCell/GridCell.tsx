@@ -12,7 +12,7 @@ export const GridCell: FC<GridNode> = ({ x, y, weight }) => {
                 g.clear();
                 g.beginFill(weight === 1 ? "white" : "gray");
                 g.lineStyle(1, "black");
-                g.drawRect(0, 0, CELL_SIZE, CELL_SIZE);
+                g.drawRect(1, 1, CELL_SIZE, CELL_SIZE);
                 g.endFill();
             }}
         />

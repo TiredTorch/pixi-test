@@ -1,12 +1,11 @@
 /// <reference types='vitest' />
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
 import { nxViteTsPaths } from "@nx/vite/plugins/nx-tsconfig-paths.plugin";
+import react from "@vitejs/plugin-react";
 
 export default defineConfig({
     root: __dirname,
     cacheDir: "./node_modules/.vite/pixi-test",
-
     server: {
         port: 4200,
         host: "localhost",
@@ -17,6 +16,7 @@ export default defineConfig({
         host: "localhost",
     },
 
+    base: "/pixi-test",
     plugins: [react(), nxViteTsPaths()],
 
     // Uncomment this if you are using workers.
