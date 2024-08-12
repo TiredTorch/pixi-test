@@ -1,19 +1,7 @@
-import {
-	astar,
-	Graph,
-	GridNode
-} from "javascript-astar";
-import {
-	useCallback,
-	useMemo,
-	useState
-} from "react";
+import { astar, Graph, GridNode } from "javascript-astar";
+import { useCallback, useMemo, useState } from "react";
 import { Stage } from "@pixi/react";
-import {
-	Button,
-	Character,
-	Grid
-} from "../components";
+import { Button, Character, Grid, MovePath } from "../components";
 import { CELL_SIZE } from "../utils";
 import { appStyles } from "./app.styles";
 
@@ -44,7 +32,7 @@ const App = () => {
             heuristic: astar.heuristics.diagonal,
         });
 
-        setCharacterPath(searchedPath);
+        setCharacterPath([startPoint, ...searchedPath]);
     }, [graph, startPoint, endPoint]);
 
     const handleResetCharacterPosition = useCallback(() => {
@@ -71,6 +59,7 @@ const App = () => {
                         endPoint={endPoint}
                         route={characterPath}
                     />
+                    <MovePath path={characterPath} />
                     <Character route={characterPath} />
                 </Stage>
             </div>
