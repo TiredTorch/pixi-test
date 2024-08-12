@@ -6,8 +6,6 @@ import { GridProps } from "./Grid.types";
 import { GridCell } from "./GridCell/GridCell";
 
 export const Grid: FC<GridProps> = ({ map, endPoint, route, startPoint }) => {
-    console.log("map", map);
-
     return (
         <Container>
             {map?.grid?.map((col, rowIndex) =>
