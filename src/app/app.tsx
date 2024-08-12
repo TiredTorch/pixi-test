@@ -1,15 +1,42 @@
-import { useCallback } from "react";
+import { astar, Graph } from "javascript-astar";
+import { useCallback, useMemo, useState } from "react";
 import { Stage } from "@pixi/react";
-import { Button } from "../components";
+import { Button, Grid } from "../components";
+import { CELL_SIZE } from "../utils";
 import { appStyles } from "./app.styles";
 
 const App = () => {
+    const [characterPath, setCharacterPath] = useState<GridNode[] | null>(null);
+
+    const graph = useMemo(
+        () =>
+            new Graph(
+                [
+                    [1, 1, 1, 1, 0, 0, 0, 0],
+                    [1, 1, 1, 1, 1, 0, 0, 0],
+                    [0, 0, 1, 0, 0, 1, 1, 1],
+                    [0, 1, 1, 1, 1, 1, 1, 1],
+                ],
+                {
+                    diagonal: true,
+                }
+            ),
+        []
+    );
+
+    const startPoint = useMemo(() => graph.grid[0][0], [graph]);
+    const endPoint = useMemo(() => graph.grid[3][7], [graph]);
+
     const handleStartMovement = useCallback(() => {
-        throw new Error();
-    }, []);
+        const searchedPath = astar.search(graph, startPoint, endPoint, {
+            heuristic: astar.heuristics.diagonal,
+        });
+
+        setCharacterPath(searchedPath);
+    }, [graph, startPoint, endPoint]);
 
     const handleResetCharacterPosition = useCallback(() => {
-        throw new Error();
+        setCharacterPath(null);
     }, []);
 
     return (
@@ -19,7 +46,15 @@ const App = () => {
                 <Button onClick={handleResetCharacterPosition}>Reset</Button>
             </div>
             <div style={appStyles.canvasSection}>
-                <Stage></Stage>
+                <Stage
+                    width={CELL_SIZE * 8}
+                    height={CELL_SIZE * 4}
+                    options={{
+                        backgroundColor: 0xfff7e0,
+                    }}
+                >
+                    <Grid map={graph} />
+                </Stage>
             </div>
         </div>
     );
