@@ -1,7 +1,7 @@
 {
     "name": "@pixi-test/source",
     "version": "0.0.1",
-    "homepage": "https://tiredtorch.github.io/pixi-test/",
+    "homepage": "https://tiredtorch.github.io/pixi-test",
     "license": "MIT",
     "scripts": {
         "start": "nx serve",
